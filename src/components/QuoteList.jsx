@@ -12,16 +12,19 @@ export default function QuoteList() {
   const isFavorite = (quote) => favorites.some((q) => q.id === quote.id);
 
   return (
-    <div className="grid gap-4">
+    <div className="grid gap-6 sm:grid-cols-2">
       {quotes.map((quote) => (
-        <div key={quote.id} className="border p-4 rounded shadow-sm bg-white">
-          <p className="italic">"{quote.text}"</p>
-          <p className="text-sm text-gray-500">- {quote.author}</p>
-          <p className="text-xs text-blue-600 mt-1">#{quote.category}</p>
+        <div
+          key={quote.id}
+          className="bg-white border rounded-2xl p-5 shadow-md hover:shadow-lg transition duration-200"
+        >
+          <p className="text-lg text-gray-800 italic mb-2">"{quote.text}"</p>
+          <p className="text-sm text-gray-500">– {quote.author}</p>
+          <p className="text-xs text-indigo-500 mt-1">#{quote.category}</p>
           {!isFavorite(quote) && (
             <button
               onClick={() => dispatch(addFavorite(quote))}
-              className="mt-2 text-blue-500"
+              className="mt-3 inline-block text-sm text-pink-500 hover:underline"
             >
               💖 Add to Favorites
             </button>

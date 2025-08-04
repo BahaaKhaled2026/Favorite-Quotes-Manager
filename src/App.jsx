@@ -1,24 +1,28 @@
-// App.js
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import Home from './pages/Home';
-import Favorites from './pages/Favorites';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  useLocation,
+} from "react-router-dom";
+import Home from "./pages/Home";
+import Favorites from "./pages/Favorites";
+import Navbar from "./components/Navbar";
 
 export default function App() {
   return (
     <Router>
-      <div className="container mx-auto px-4 py-6">
-        <nav className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl font-bold">Favorite Quotes</h1>
-          <div>
-            <Link className="mr-4 text-blue-500" to="/">Home</Link>
-            <Link className="text-blue-500" to="/favorites">Favorites</Link>
+      <Navbar />
+      <div className="container">
+        <main className="flex-grow flex items-center justify-center">
+          <div className="w-full max-w-5xl px-4 py-8">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/favorites" element={<Favorites />} />
+            </Routes>
           </div>
-        </nav>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/favorites" element={<Favorites />} />
-        </Routes>
+        </main>
       </div>
     </Router>
   );

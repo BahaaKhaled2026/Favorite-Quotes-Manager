@@ -11,14 +11,16 @@ export default function FilterBar() {
 
   return (
     <div className="mb-6">
-      <h2 className="mb-2 font-semibold">Filter by Category:</h2>
-      <div className="flex gap-2">
+      <h2 className="mb-3 text-xl font-semibold text-gray-800">Filter by Category</h2>
+      <div className="flex flex-wrap gap-2">
         {categories.map((cat) => (
           <button
             key={cat}
             onClick={() => dispatch(setFilter(cat))}
-            className={`px-3 py-1 rounded border text-sm ${
-              active === cat ? 'bg-blue-500 text-white' : 'bg-white text-black'
+            className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 border ${
+              active === cat
+                ? 'bg-blue-600 text-white border-blue-600 shadow-sm'
+                : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100'
             }`}
           >
             {cat}
